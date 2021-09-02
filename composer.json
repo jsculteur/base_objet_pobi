@@ -20,5 +20,10 @@
     "require-dev": {
         "phpoffice/phpspreadsheet": "^1.18",
         "setasign/fpdf": "^1.8"
+    }, 
+    "scripts": {
+        "post-install-cmd": [
+            "yarn install"
+        ]
     }
 }
