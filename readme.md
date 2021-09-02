@@ -4,17 +4,14 @@ Instructions d'installation :
 ```command
     composer install
 ```
-
-- Executer ensuite la commande suivante : 
-```command
-    yarn install
-```
+La commande va automatiquement lancer l'installation de yarn par la suite pour les dépendances front (jquery, bootstrap, etc...)
 
 - Définir un code outil dans http://utilisateurs.pobi.dom et venir mettre ce code ici (Par exemple avec l'appli BPSYLOB) en haut du fichier index.php : 
 ```php
 // index.php
 $codeOutil = "BPSYLOB";
 ```
+*NB: Il faut lier l'outil à votre profil sinon vous ne pourrez pas accéder à l'outil lors de votre connexion sur celui-ci*
 
 - Si vous souhaitez ajouter des liens dans la navbar, vous pouvez venir les ajouter ici : 
 ```html
