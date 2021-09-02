@@ -15,14 +15,12 @@ class InformixConnection {
             $portInformix = "1526";							// port logique de la connexion
             $loginInformix = "informix";					// login
             $mdpInformix = "_yYQzqk6";						// password
-            $baseInformix = "socpobi_precix";				// BDD PROD
-            $baseInformixTest = "socpobi99_precix";				// BDD TEST
             $serverInformix = "ol_gpao";					//Nom du serveur
             
-            $prod = new PDO("informix:host=".$servInformix."; service=".$portInformix."; database=".$baseInformix."; server=".$serverInformix."; protocol=onsoctcp; EnableScrollableCursors=1", $loginInformix, $mdpInformix);
+            $prod = new PDO("informix:host=".$servInformix."; service=".$portInformix."; database=socpobi_precix; server=".$serverInformix."; protocol=onsoctcp; EnableScrollableCursors=1", $loginInformix, $mdpInformix);
             $prod->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $test = new PDO("informix:host=".$servInformix."; service=".$portInformix."; database=".$baseInformixTest."; server=".$serverInformix."; protocol=onsoctcp; EnableScrollableCursors=1", $loginInformix, $mdpInformix);
+            $test = new PDO("informix:host=".$servInformix."; service=".$portInformix."; database=socpobi99_precix; server=".$serverInformix."; protocol=onsoctcp; EnableScrollableCursors=1", $loginInformix, $mdpInformix);
             $test->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             $this->bddProd = $prod;
