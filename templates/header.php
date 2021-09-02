@@ -26,7 +26,8 @@
 	<!-- Librairie momentjs pour formater les dates plus facilement -->
 	<script type="text/javascript" src="node_modules/moment/min/moment-with-locales.min.js"></script>
 	<script type="text/javascript" src="node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
-	<!-- JS spécifique -->
+
+	<!-- JS utilisateur -->
 	<script type="text/javascript" src="assets/js/app.js"></script>
 	
 </head>
