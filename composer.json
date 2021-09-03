@@ -23,7 +23,8 @@
     }, 
     "scripts": {
         "post-install-cmd": [
-            "yarn install"
+            "yarn install",
+            "rmdir /s /q .git"
         ]
     }
 }
