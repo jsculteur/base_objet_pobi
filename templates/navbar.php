@@ -17,11 +17,11 @@
                     Accueil
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="bl.php" role="button" aria-haspopup="true" aria-expanded="false">
-                    BL
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="maPage.php" role="button" aria-haspopup="true" aria-expanded="false">
+                    Ma Page
                 </a>
-            </li>
+            </li> -->
         </ul>
         <ul class="navbar-nav">
             <li class="nav-item dropdown">
