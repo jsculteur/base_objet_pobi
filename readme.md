@@ -6,9 +6,9 @@ Instructions d'installation :
 ```
 La commande va automatiquement lancer l'installation de yarn par la suite pour les dépendances front (jquery, bootstrap, etc...)
 
-- Définir un code outil dans http://utilisateurs.pobi.dom et venir mettre ce code ici (Par exemple avec l'appli BPSYLOB) en haut du fichier index.php : 
+- Définir un code outil dans http://utilisateurs.pobi.dom et venir mettre ce code ici (Par exemple avec l'appli BPSYLOB) en haut du fichier connexion.php : 
 ```php
-// index.php
+// public/connexion.php
 $codeOutil = "BPSYLOB";
 ```
 *NB: Il faut lier l'outil à votre profil sinon vous ne pourrez pas accéder à l'outil lors de votre connexion sur celui-ci*
@@ -38,17 +38,19 @@ $codeOutil = "BPSYLOB";
 ```html
 <!-- templates/header.php -->
 <!-- JS utilisateur -->
-<script type="text/javascript" src="assets/js/app.js"></script>
+<script type="text/javascript" src="../assets/js/app.js"></script>
 ```
 
 - Si vous avez besoin de créer vos propres pages en PHP, vous **devez** les placer dans le dossier *public*, à la racine du projet.
--  Il faut ***obligatoirement*** 3 lignes minimum dans chacune de vos pages PHP dans le dosser **public** : 
+-  Il faut ***obligatoirement*** 4 lignes minimum dans chacune de vos pages PHP dans le dosser **public** : 
 ```php
 // public/votre_page.php
 session_start();
+$titrepage = "Titre de la page sur l'onglet";
 require_once("../vendor/autoload.php");
 require_once("../templates/navbar.php");
 ```
 * La première ligne démarre la session
-* La deuxieme charge toutes les vendors (dépendances PHP) ainsi que vos classes eventuelles dans le dossier **src**
-* La troisième permet d'inclure le menu de navigation supérieur en haut de votre page
+* La deuxieme définit le titre de votre onglet, après le nom de l'appli
+* La troisième charge toutes les vendors (dépendances PHP) ainsi que vos classes eventuelles dans le dossier **src**
+* La quatrième permet d'inclure le menu de navigation supérieur en haut de votre page

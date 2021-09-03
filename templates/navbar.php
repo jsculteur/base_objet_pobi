@@ -5,7 +5,7 @@
 <!-- Création d'une navbar afin de naviguer plus facilement entre les différents éléments (Nomenclature ou réplication de base) -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="index.php">
-        <img src="assets/img/logo.png" width="60" height="30" class="d-inline-block align-top" alt="Logo POBI Industrie">&nbsp;&nbsp;Nom Appli&nbsp;&nbsp;
+        <img src="../assets/img/logo.png" width="60" height="30" class="d-inline-block align-top" alt="Logo POBI Industrie">&nbsp;&nbsp;Nom Appli&nbsp;&nbsp;
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -13,15 +13,15 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link" href="home.php" role="button" aria-haspopup="true" aria-expanded="false">
                     Accueil
                 </a>
             </li>
-            <!-- <li class="nav-item">
-                <a class="nav-link" href="../pages/tableauSuivi.php" role="button" aria-haspopup="true" aria-expanded="false">
-                    Tableau de suivi
+            <li class="nav-item">
+                <a class="nav-link" href="bl.php" role="button" aria-haspopup="true" aria-expanded="false">
+                    BL
                 </a>
-            </li> -->
+            </li>
         </ul>
         <ul class="navbar-nav">
             <li class="nav-item dropdown">
