@@ -12,7 +12,7 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
 	<meta name="viewport" content="width=device-width" />
 	<!-- $titrepage contient le titre de la page, renvoyé par la page précédent l'appel de ce fichier -->
-	<title>Appli - <?php echo $titrepage; ?></title>
+	<title>Nom Appli - <?php echo $titrepage; ?></title>
 	<!-- Favicon -->
 	<link rel="icon" href="../assets/img/favicon.png" />
 	<!-- Style -->

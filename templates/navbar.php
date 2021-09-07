@@ -4,7 +4,7 @@
 
 <!-- Création d'une navbar afin de naviguer plus facilement entre les différents éléments (Nomenclature ou réplication de base) -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="index.php">
+    <a class="navbar-brand" href="home.php">
         <img src="../assets/img/logo.png" width="60" height="30" class="d-inline-block align-top" alt="Logo POBI Industrie">&nbsp;&nbsp;Nom Appli&nbsp;&nbsp;
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

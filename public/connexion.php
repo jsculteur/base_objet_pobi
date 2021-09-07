@@ -17,9 +17,9 @@
     use App\Service\MySqlConnection;
     use App\Service\InformixConnection;
 
-    $connectionInformix = new InformixConnection();
+    $connectionInformix = new InformixConnection("socpobi99_precix");
     $connectionMySql = new MySqlConnection();
-    $baseInformix = $connectionInformix->getConnectionTest();
+    $baseInformix = $connectionInformix->getConnection();
     $baseUtilisateurs = $connectionMySql->getConnectionUtilisateurs();
     $baseDG = $connectionMySql->getConnectionDG();
     $login = connexionWindows();
@@ -136,4 +136,6 @@
                 ;
             }
         }
+    } else {
+        header("refresh:0;url=home.php");
     }

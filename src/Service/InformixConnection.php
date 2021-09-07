@@ -6,10 +6,9 @@ use \PDO;
 
 class InformixConnection {
 
-    private $bddProd;
-    private $bddTest;
+    private $bddInformix;
 
-    public function __construct() {
+    public function __construct($bdd) {
         try {
             $servInformix  = "pobi-sylob.pobi.dom";  	// Serveur PROD
             $portInformix = "1526";							// port logique de la connexion
@@ -17,14 +16,10 @@ class InformixConnection {
             $mdpInformix = "_yYQzqk6";						// password
             $serverInformix = "ol_gpao";					//Nom du serveur
             
-            $prod = new PDO("informix:host=".$servInformix."; service=".$portInformix."; database=socpobi_precix; server=".$serverInformix."; protocol=onsoctcp; EnableScrollableCursors=1", $loginInformix, $mdpInformix);
-            $prod->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $connexion = new PDO("informix:host=".$servInformix."; service=".$portInformix."; database=".$bdd."; server=".$serverInformix."; protocol=onsoctcp; EnableScrollableCursors=1", $loginInformix, $mdpInformix);
+            $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $test = new PDO("informix:host=".$servInformix."; service=".$portInformix."; database=socpobi99_precix; server=".$serverInformix."; protocol=onsoctcp; EnableScrollableCursors=1", $loginInformix, $mdpInformix);
-            $test->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-            $this->bddProd = $prod;
-            $this->bddTest = $test;
+            $this->bddInformix = $connexion;
             
         }
         catch (Exception $e) {
@@ -33,11 +28,7 @@ class InformixConnection {
         }
     }
 
-    public function getConnectionProd() {
-        return $this->bddProd;
-    }
-
-    public function getConnectionTest() {
-        return $this->bddTest;
+    public function getConnection() {
+        return $this->bddInformix;
     }
 }
