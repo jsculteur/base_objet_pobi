@@ -28,7 +28,8 @@
 	<script type="text/javascript" src="../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 
 	<!-- JS utilisateur -->
-	<script type="text/javascript" src="../assets/js/app.js"></script>
+	<!-- Le type est "module" car il permet d'inclure d'autres scripts -->
+	<script type="module" src="../assets/js/app.js"></script>
 	
 </head>
 <body id="body" class="center">
