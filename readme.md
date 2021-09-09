@@ -38,7 +38,8 @@ $codeOutil = "BPSYLOB";
 ```html
 <!-- templates/header.php -->
 <!-- JS utilisateur -->
-<script type="text/javascript" src="../assets/js/app.js"></script>
+<!-- Le type est "module" car il permet d'inclure d'autres scripts -->
+<script type="module" src="../assets/js/app.js"></script>
 ```
 
 - Si vous avez besoin de créer vos propres pages en PHP, vous **devez** les placer dans le dossier *public*, à la racine du projet.
@@ -54,3 +55,37 @@ require_once("../templates/navbar.php");
 * La deuxieme définit le titre de votre onglet, après le nom de l'appli
 * La troisième charge toutes les vendors (dépendances PHP) ainsi que vos classes eventuelles dans le dossier **src**
 * La quatrième permet d'inclure le menu de navigation supérieur en haut de votre page
+
+
+Pour le javascript, une petite explication s'impose : 
+
+```html
+<script type="module" src="../assets/js/app.js"></script>
+```
+Ici, le type du fichier est "module" et non pas "text/javascript" comme d'habitude.
+
+Cela va permettre d'enregistrer ce fichier **tools.js** comme module, ce qui permet d'importer autant de fichiers js que possible au sein de celui-ci.
+
+L'importation de ce fichier tools se fait de la facon suivante : 
+```javascript
+// assets/app.js
+"use strict";
+import * as tools from './tools.js';
+```
+* Ici, toutes les fonctions qui seraient déclarées dans **tools.js** seront disponibles graçe à la variable tools (vous pouvez donner le nom que vous voulez à cette variable)
+
+* Dans le fichier **tools.js**, Chaque fonction est préfixée de l'attribut ***export*** car c'est ce qui permet de l'utiliser en dehors du fichier **tools.js** : 
+```javascript
+// assets/tools.js
+export function maFonctionExportee() {
+
+}
+```
+* Dans le fichier **app.js**, si je souhaite utiliser la fonction *maFonctionExportee*, je devrais procéder de la façon suivante : 
+```javascript
+// assets/app.js
+"use strict";
+import * as tools from './tools.js';
+tools.maFonctionExportee();
+```
+*NB: Bien evidement, si la fonction que vous souhaitez utiliser possède des paramètres, vous devrez également les renseigner lors de l'appel de cette fonction*
