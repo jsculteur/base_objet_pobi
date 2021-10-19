@@ -12,6 +12,7 @@
 
     require_once("../vendor/autoload.php");
     require_once("../templates/functions.inc.php");
+    // require_once("../templates/header.php");
     require_once("../templates/navbar.php");
     require_once("../classes/password/passwordLib.php");
     require_once("../classes/detectmobile/Mobile_Detect.php");
@@ -23,7 +24,8 @@
 
     $mySql = new MySqlConnection();
     $bdd = $mySql->getConnectionStock();
-    $bddSystem = new InformixConnection("system");
+    $informix = new InformixConnection("system");
+	$bddSystem = $informix->getConnection();
 
 
     //Recuperation user agent
@@ -132,7 +134,7 @@
                     <span id="title" class="animate__animated  animate__backInDown inline-block">Formulaire de Connexion</span>
                 </div>		
 	    	</div>
-            <form id="formConnexion" method="POST" action="home.php" class="pt-3 pb-3 form-control">
+            <form id="formConnexion" method="POST" action="connexion.php" class="pt-3 pb-3 form-control">
                 <div class="row justify-content-center margin-auto">
                     <div class="col-11 col-md-6">
                         <label class="sr-only" for="login">Login</label>

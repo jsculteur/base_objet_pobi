@@ -31,7 +31,7 @@ class MySqlConnection {
             $bddConfigurateur->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $bddConfigurateur->exec("SET NAMES utf8");
 
-            $bddBaseStock = new PDO("mysql:host=".$ipServ."; port=".$port."; dbname=utilisateursoutilspobi", $login, $mdp);
+            $bddBaseStock = new PDO("mysql:host=".$ipServ."; port=".$port."; dbname=stock", $login, $mdp);
             $bddBaseStock->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $bddBaseStock->exec("SET NAMES utf8");
 
