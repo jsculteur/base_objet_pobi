@@ -1,6 +1,8 @@
 <?php
 	//Variable qui permet de mettre la bonne heure lors de l'utilisation de la fonction date ();
 	date_default_timezone_set('Europe/Paris');
+	// Definition de la variable $nomAppli qui sera répercutée partout
+	$nomAppli = "Nom Appli"
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +14,7 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
 	<meta name="viewport" content="width=device-width" />
 	<!-- $titrepage contient le titre de la page, renvoyé par la page précédent l'appel de ce fichier -->
-	<title>Nom Appli - <?php echo $titrepage; ?></title>
+	<title><?php echo $nomAppli." - ".$titrepage; ?></title>
 	<!-- Favicon -->
 	<link rel="icon" href="../assets/img/favicon.png" />
 	<!-- Style -->
