@@ -28,7 +28,7 @@
                 <!-- Si la personne n'est pas connectée, on n'affiche ni l'utilisateur ni le dropdown pour se déconnecter -->
                 <?php if(isset($_SESSION["pseudo"]))
                     echo
-                        '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . 
+                        '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . 
                             '<i class="fa fa-user"></i> <span id="currentUser">'.strtoupper($_SESSION["pseudo"]).'</span>' . 
                         '</a>'. 
                         '<div class="dropdown-menu" aria-labelledby="navbarDropdown">' . 
