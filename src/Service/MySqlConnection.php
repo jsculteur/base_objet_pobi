@@ -9,6 +9,7 @@ class MySqlConnection {
     private $bddGenerale;
     private $bddUtilisateurs;
     private $bddConfigurateurMenuiserie;
+    private $bddStock;
 
     public function __construct() {
         try {
@@ -30,9 +31,14 @@ class MySqlConnection {
             $bddConfigurateur->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $bddConfigurateur->exec("SET NAMES utf8");
 
+            $bddBaseStock = new PDO("mysql:host=".$ipServ."; port=".$port."; dbname=utilisateursoutilspobi", $login, $mdp);
+            $bddBaseStock->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $bddBaseStock->exec("SET NAMES utf8");
+
             $this->bddGenerale = $bddDonneesGeneralesPobi;
             $this->bddUtilisateurs = $bddUtilisateursPobi;
             $this->bddConfigurateurMenuiserie = $bddConfigurateur;
+            $this->bddStock = $bddBaseStock;
         }
         catch (Exception $e) {
             echo $e.'<br />';
@@ -50,5 +56,9 @@ class MySqlConnection {
 
     public function getConnectionConfigurateur() {
         return $this->bddConfigurateurMenuiserie;
+    }
+
+    public function getConnectionStock() {
+        return $this->bddStock;
     }
 }
