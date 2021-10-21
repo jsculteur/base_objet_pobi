@@ -19,11 +19,17 @@
 	<link rel="icon" href="../assets/img/favicon.png" />
 	<!-- Style -->
 	<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../classes/jquery-ui-1.13.0/jquery-ui.min.css" />
     <link rel="stylesheet" href="../assets/css/style.css" />
-	<link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../assets/css/copyToClipboard.css" />
+    <link rel="stylesheet" href="../assets/css/visualisationOf.css" />
 	<link rel="stylesheet" href="../node_modules/sweetalert2/dist/sweetalert2.min.css" />
+	<link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css" />
 	<!-- JS -->
 	<script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="../classes/jquery-ui-1.13.0/jquery-ui.min.js"></script>
+
+	<!-- <script type="text/javascript" src="../node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script> -->
 	<script type="text/javascript" src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Librairie momentjs pour formater les dates plus facilement -->
 	<script type="text/javascript" src="../node_modules/moment/min/moment-with-locales.min.js"></script>
@@ -31,7 +37,8 @@
 
 	<!-- JS utilisateur -->
 	<!-- Le type est "module" car il permet d'inclure d'autres scripts -->
+	<!-- <script type="text/javascript" src="../node_modules/jquery-ui/ui/widgets/autocomplete.js"></script> -->
 	<script type="module" src="../assets/js/app.js"></script>
 	
 </head>
-<body id="body" class="center">
+<body id="body">
