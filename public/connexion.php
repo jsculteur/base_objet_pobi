@@ -26,6 +26,8 @@
     $bdd = $mySql->getConnectionStock();
     $informix = new InformixConnection("system");
 	$bddSystem = $informix->getConnection();
+	$fonctions = new RepertoireFonction();
+
 
 
     //Recuperation user agent
@@ -48,9 +50,10 @@
     }
 	
 	$detect = new Mobile_Detect;	
-	
+	// var_dump($_SESSION);
+	// die();
 	//Si nous detectons que nous sommes sur un zebra nous lancons le login à vide comme firefox
-	if($detect->isMobile() == false && $device != "zebra"){
+	if(($detect->isMobile() == false && $device != "zebra")){
 		$login = connexionWindows();
 	}else{
 		$login = "";
@@ -105,26 +108,31 @@
 						$_SESSION["su"] = false;						
 					}
 				} else {
-					echo '<div class="alert alert-danger col-12 text-center mb-0" role="alert">Le mot de passe renseigné est incorrect.</div>';
+					$fonctions->notifier("Le mot de passe renseigné est incorrect", false);
+					// echo '<div class="alert alert-danger col-12 text-center mb-0" role="alert">Le mot de passe renseigné est incorrect.</div>';
 				}	
 			} else {
-				echo '<div class="alert alert-danger col-12 text-center mb-0" role="alert">Le login renseigné n\'existe pas dans la base de données.</div>';
+				$fonctions->notifier("Le login renseigné n\'existe pas dans la base de données.", false);
+				// echo '<div class="alert alert-danger col-12 text-center mb-0" role="alert">Le login renseigné n\'existe pas dans la base de données.</div>';
 			}	
 		} else {
-			echo '<div class="alert alert-danger col-12 text-center mb-0" role="alert">Le login renseigné doit commencé par OPL_.</div>';
+			$fonctions->notifier("Le login renseigné doit commencé par OPL_.", false);
+			// echo '<div class="alert alert-danger col-12 text-center mb-0" role="alert">Le login renseigné doit commencé par OPL_.</div>';
 		}	
 		
 	//Si nous arrivons a recupere le login windows
 	} else if(isset($_POST["logout"]) && $_POST["logout"] == "true") {
 		$_SESSION["connecte"] = false;
 		session_destroy();
-		echo '<div class="alert alert-success col-12 text-center mb-0" role="alert">Déconnexion réussie.</div>';	
+		$fonctions->notifier("Déconnexion réussie");
+		echo '<meta http-equiv="Refresh" content="2; url=connexion.php">';
 	}
 
     //Formulaire des applis --> si nous sommes connecté
 	if(isset($_SESSION["connecte"]) && $_SESSION["connecte"] == true) {
-		$connecte = "true";
-        header("Refresh:0;url=home.php");
+		// $connecte = "true";
+		// $fonctions->notifier("Connexion réussie");
+		echo '<meta http-equiv="Refresh" content="0; url=home.php">';
 	//Pas connecté --> formulaire de connexion	
 	} else {
 		$connecte = "false";

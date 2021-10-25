@@ -6,4 +6,4 @@
     require_once("../templates/navbar.php");
 
     // Rediriger vers votre page
-    // header("Refresh:0;url=chemin_vers_ma_page.php");
+	// echo '<meta http-equiv="Refresh" content="2; url=chemin_vers_ma_page.php.php">';

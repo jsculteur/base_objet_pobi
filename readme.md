@@ -6,27 +6,20 @@ Instructions d'installation :
 ```
 La commande va automatiquement lancer l'installation de yarn par la suite pour les dépendances front (jquery, bootstrap, etc...)
 
-- Définir un code outil dans http://utilisateurs.pobi.dom et venir mettre ce code ici (Par exemple avec l'appli BPSYLOB) en haut du fichier connexion.php : 
-```php
-// public/connexion.php
-$codeOutil = "BPSYLOB";
-```
-*NB: Il faut lier l'outil à votre profil sinon vous ne pourrez pas accéder à l'outil lors de votre connexion sur celui-ci*
-
 - Si vous souhaitez ajouter des liens dans la navbar, vous pouvez venir les ajouter ici : 
 ```html
 <!-- templates/navbar.php -->
 <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav me-auto">
         <li class="nav-item">
-            <a class="nav-link" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link" href="home.php" role="button" aria-haspopup="true" aria-expanded="false">
                 Accueil
             </a>
         </li>
         <!-- Rajouter un lien comme ci-dessous -->
         <!-- <li class="nav-item">
-            <a class="nav-link" href="cible_du_lien" role="button" aria-haspopup="true" aria-expanded="false">
-                Texte du lien
+            <a class="nav-link" href="maPage.php" role="button" aria-haspopup="true" aria-expanded="false">
+                Ma Page
             </a>
         </li> -->
     </ul>
@@ -43,19 +36,31 @@ $codeOutil = "BPSYLOB";
 ```
 
 - Si vous avez besoin de créer vos propres pages en PHP, vous **devez** les placer dans le dossier *public*, à la racine du projet.
--  Il faut ***obligatoirement*** 4 lignes minimum dans chacune de vos pages PHP dans le dosser **public** : 
+-  Il faut ***obligatoirement*** ces quelques lignes minimum dans chacune de vos pages PHP dans le dosser **public** : 
 ```php
 // public/votre_page.php
+// session_name("some_session_name");
+// session_set_cookie_params(0, '/', '.pobi.dom');
+
+//Demarrage de la sessions utilisateur
 session_start();
-$titrepage = "Titre de la page sur l'onglet";
+$titrepage = "Accueil";
 require_once("../vendor/autoload.php");
 require_once("../templates/navbar.php");
-```
-* La première ligne démarre la session
-* La deuxieme définit le titre de votre onglet, après le nom de l'appli
-* La troisième charge toutes les vendors (dépendances PHP) ainsi que vos classes eventuelles dans le dossier **src**
-* La quatrième permet d'inclure le menu de navigation supérieur en haut de votre page
 
+// Ajout de la classe 'RepertoireFonctions'
+use App\Service\RepertoireFonction;
+$fonctions = new RepertoireFonction();
+
+// Récupération du navigateur courant
+$browser = $fonctions->getBrowser();
+// Si le navigateur n'est pas Chrome ni Firefox, on bloque l'accès à l'outil
+if($browser['name'] != 'Google Chrome' && $browser['name'] != 'Mozilla Firefox') {
+    echo '<p class="col-8 center alert alert-danger">Merci d\'utiliser Google CHROME pour pouvoir accèder à cette application !</p>';
+} else {
+    // Si le navigateur est autorisé, vous pouvez écrire votre code HTML ici
+}
+```
 
 Pour le javascript, une petite explication s'impose : 
 

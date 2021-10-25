@@ -17,14 +17,8 @@
 	 
 		$headers = apache_request_headers(); // Récupération des l'entêtes client
 	 
-		if (@$_SERVER['HTTP_VIA'] != NULL) { // nous verifions si un proxy est utilisé : parceque l'identification par ntlm ne peut pas passer par un proxy
+		if (@$_SERVER['HTTP_VIA'] != NULL && !isset($headers['Authorization'])) { // nous verifions si un proxy est utilisé : parceque l'identification par ntlm ne peut pas passer par un proxy
 			return false;
-		} elseif (!isset($headers['Authorization'])) { //si l'entete autorisation est inexistante
-			header("HTTP/1.1 401 Unauthorized"); //envoi au client le mode d'identification
-			header("Connection: Keep-Alive");
-			header("WWW-Authenticate: Negotiate");
-			header("WWW-Authenticate: NTLM"); //dans notre cas le NTLM
-			exit;
 		}
 	 
 		if (!isset($headers['Authorization'])) {
