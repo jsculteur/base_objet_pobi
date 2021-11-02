@@ -35,6 +35,29 @@ La commande va automatiquement lancer l'installation de yarn par la suite pour l
 <script type="module" src="../assets/js/app.js"></script>
 ```
 
+- Une vérification est faite pour empecher les utilisateurs utilisant **Internet Explorer** de pouvoir accéder à l'application. Celle-ci est faite directement dans le fichier index.php à la racine : 
+
+```php
+// index.php
+
+// On ajoute les vendors pour pouvoir charger les classes
+require_once("vendor/autoload.php");
+// Ajout de la classe 'RepertoireFonctions'
+use App\Service\RepertoireFonction;
+$fonctions = new RepertoireFonction();
+// Récupération du navigateur courant
+$browser = $fonctions->getBrowser();
+// Si le navigateur n'est pas Chrome ni Firefox, on bloque l'accès à l'outil
+if($browser['name'] != 'Google Chrome' && $browser['name'] != 'Mozilla Firefox') {
+    echo '<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />';
+    echo '<link rel="stylesheet" href="assets/css/style.css" />';
+    echo '<p class="col-8 center alert alert-danger">Merci d\'utiliser Google CHROME pour pouvoir accèder à cette application !</p>';
+} else {
+    // Sinon on redirige vers la page de connexion
+    header("Refresh:0;url=public/connexion.php");
+}
+```
+
 - Si vous avez besoin de créer vos propres pages en PHP, vous **devez** les placer dans le dossier *public*, à la racine du projet.
 -  Il faut ***obligatoirement*** ces quelques lignes minimum dans chacune de vos pages PHP dans le dosser **public** : 
 ```php
@@ -42,7 +65,7 @@ La commande va automatiquement lancer l'installation de yarn par la suite pour l
 // session_name("some_session_name");
 // session_set_cookie_params(0, '/', '.pobi.dom');
 
-//Demarrage de la sessions utilisateur
+//Demarrage de la session utilisateur
 session_start();
 $titrepage = "Accueil";
 require_once("../vendor/autoload.php");
@@ -52,14 +75,8 @@ require_once("../templates/navbar.php");
 use App\Service\RepertoireFonction;
 $fonctions = new RepertoireFonction();
 
-// Récupération du navigateur courant
-$browser = $fonctions->getBrowser();
-// Si le navigateur n'est pas Chrome ni Firefox, on bloque l'accès à l'outil
-if($browser['name'] != 'Google Chrome' && $browser['name'] != 'Mozilla Firefox') {
-    echo '<p class="col-8 center alert alert-danger">Merci d\'utiliser Google CHROME pour pouvoir accèder à cette application !</p>';
-} else {
-    // Si le navigateur est autorisé, vous pouvez écrire votre code HTML ici
-}
+// Ici, mettre votre code HTML
+echo '';
 ```
 
 Pour le javascript, une petite explication s'impose : 
